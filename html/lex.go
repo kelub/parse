@@ -396,7 +396,8 @@ func (l *Lexer) shiftAttribute() []byte {
 		l.r.Rewind(nameEnd)
 		l.attrVal = nil
 	}
-	l.text = parse.ToLower(l.r.Lexeme()[nameStart:nameEnd])
+	// l.text = parse.ToLower(l.r.Lexeme()[nameStart:nameEnd])
+	l.text = l.r.Lexeme()[nameStart:nameEnd]
 	return l.r.Shift()
 }
 

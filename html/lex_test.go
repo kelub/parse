@@ -156,6 +156,9 @@ func TestAttributes(t *testing.T) {
 		{"<foo \x00>", []string{"\x00", ""}},
 		{"<foo \x00=\x00>", []string{"\x00", "\x00"}},
 		{"<foo \x00='\x00'>", []string{"\x00", "'\x00'"}},
+
+		// attr text not ToLower
+		{`<DIV TITLE="blah">boo</DIV>`, []string{"TITLE", "\"blah\""}},
 	}
 	for _, tt := range attributeTests {
 		t.Run(tt.attr, func(t *testing.T) {
